@@ -58,7 +58,7 @@ public class player_movement : MonoBehaviour
         if (interactionTrigger != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawCube(interactionTrigger.bounds.center, interactionTrigger.bounds.size);
+            Gizmos.DrawWireCube(interactionTrigger.bounds.center, interactionTrigger.bounds.size);
         }
     }
 }
