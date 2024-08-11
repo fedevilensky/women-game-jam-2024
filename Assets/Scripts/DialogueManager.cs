@@ -90,10 +90,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         Texture2D texture = LoadTexture("Assets/Dialogues/Images/" + name + ".png");
-        // if (!texture.Reinitialize(texture.width * imageHeight / texture.height, imageHeight))
-        // {
-        //     Debug.LogError("Failed to reinitialize texture");
-        // }
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0), texture.height * 1f / imageHeight);
 
         if (dialogueImagesLength == dialogueImages.Length)
