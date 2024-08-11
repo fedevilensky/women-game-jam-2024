@@ -55,8 +55,7 @@ public class LevelManager : MonoBehaviour
 
     void PlayIntro()
     {
-        var background = GameObject.FindWithTag("Background");
-        background.GetComponent<SpriteRenderer>().sprite = levelSprites[0];
+        GetComponent<BackgroundUpdater>().SetBackground(0);
         var dialogue = DialogueParser.Parse("intro");
         DialogueManager.instance.StartDialogue(dialogue);
     }
