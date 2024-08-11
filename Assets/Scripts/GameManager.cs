@@ -12,14 +12,12 @@ public class GameManager : MonoBehaviour
 
     public ScreenFade screenFade;
 
-    private Animator animator;
 
     void Start()
     {
         timeManager = GetComponent<TimeManager>();
         timeManager.SetCallback(ResetLoop);
         playerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     }
 
     void ResetLoop()
@@ -27,15 +25,10 @@ public class GameManager : MonoBehaviour
         BlackScreen();
     }
 
-    // TODO Call animation manager to fade to black screen and while on the black screen, call ResetPlayerPosition
     void BlackScreen()
     {
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         screenFade.FadeToBlackAndBack(ResetPlayerPosition);
-        // screenFade.FadeToBlack();
-        // ResetPlayerPosition();
-        // screenFade.FadeToClear();
-        // Code to make the screen black
     }
 
 
