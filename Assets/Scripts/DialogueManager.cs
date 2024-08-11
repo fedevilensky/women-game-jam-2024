@@ -1,13 +1,22 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 
 using Dialogue = System.Collections.Generic.IEnumerator<DialoguePart>;
+
+
+class Pair<T1, T2>
+{
+    public T1 First;
+    public T2 Second;
+
+    public Pair(T1 first, T2 second)
+    {
+        First = first;
+        Second = second;
+    }
+}
 
 public class DialogueManager : MonoBehaviour
 {
@@ -83,8 +92,22 @@ public struct DialoguePart
 
 public class DialogueParser
 {
+    private static Pair<string, IEnumerable<DialoguePart>>[] dialogueBuffer =
+        new Pair<string, IEnumerable<DialoguePart>>[10];
+    private static int dialogueBufferIndex = 0;
+    private static int dialogueBufferLength = 0;
     public static Dialogue Parse(string dialogueTitle)
     {
+
+        for (int i = 0; i < dialogueBufferLength; i++)
+        {
+            var index = (dialogueBufferIndex + i) % dialogueBuffer.Length;
+            if (dialogueBuffer[index].First == dialogueTitle)
+            {
+                return dialogueBuffer[index].Second.GetEnumerator();
+            }
+        }
+
         using (TextReader r = new StreamReader("Assets/Dialogues/" + dialogueTitle + ".txt"))
         {
             var dialogueParts = new List<DialoguePart>();
@@ -120,6 +143,19 @@ public class DialogueParser
             {
                 dialogueParts.Add(new DialoguePart { emotion = emotion, text = text != "" ? text : "..." });
             }
+
+            if (dialogueBufferLength == dialogueBuffer.Length)
+            {
+                dialogueBufferIndex = (dialogueBufferIndex + 1) % dialogueBuffer.Length;
+            }
+            else
+            {
+                dialogueBufferLength++;
+                dialogueBufferIndex = dialogueBufferLength - 1;
+            }
+
+            dialogueBuffer[dialogueBufferIndex] = new Pair<string, IEnumerable<DialoguePart>>(
+                dialogueTitle, dialogueParts);
 
             return dialogueParts.GetEnumerator();
         }
