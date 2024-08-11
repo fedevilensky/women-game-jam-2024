@@ -5,6 +5,7 @@ public class DocumentInteractableObject : InteractableObject
   {
     var currentLevel = LevelManager.instance.currentLevel;
     var documentName = interactionText[currentLevel];
+    print(isInteractable);
     if (!isInteractable)
     {
       var dialogue = DialogueParser.Parse("defaultDialogue");

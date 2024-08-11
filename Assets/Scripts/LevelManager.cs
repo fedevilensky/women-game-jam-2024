@@ -47,14 +47,34 @@ public class LevelManager : MonoBehaviour
             PlayIntro();
         }
 
-        if (level == 2)
+        if (level == 1)
         {
-            GameObject.FindObjectOfType<ExperimentTableSpriteHandler>().SetExperimentTableSprite(false);
+            GameObject.FindObjectOfType<ExperimentTableSpriteHandler>().SetExperimentTableSprite(true);
             timeManager.StartTicking();
-            GetComponent<GameManager>().ResetLoop();
             var dialogue = DialogueParser.Parse("start1");
             DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
         }
+
+        if (level == 4)
+        {
+            GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(1);
+        }
+        if (level == 5)
+        {
+            GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(2);
+        }
+        if (level == 6)
+        {
+            GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().MovePosition(GameObject.FindWithTag("ForestSpawn").transform.position);
+            GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(3);
+            foreach (var interactableObject in interactableObjects)
+            {
+                interactableObject.gameObject.SetActive(false);
+            }
+            return;
+        }
+
+        GetComponent<GameManager>().ResetLoop();
 
         foreach (var interactableObject in interactableObjects)
         {
