@@ -188,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 100506487}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.08, y: -4.456098, z: -10}
+  m_LocalPosition: {x: -1.08, y: -1.1202363, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efa30231c3c3db48ad5f88b49f082ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionText: test
+  interactionText: 
   activeLevel: 0
 --- !u!212 &236459783
 SpriteRenderer:
@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53ab248ada760f41b2b7a01328a00ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeManager: {fileID: 0}
+  timeManager: {fileID: 752047653}
   dialogueBox: {fileID: 1966069875}
   textMeshPro: {fileID: 318378427}
   imageHeight: 128
@@ -1930,11 +1930,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5453554105335756171, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.22
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 5453554105335756171, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.41
+      value: -1.1202363
       objectReference: {fileID: 0}
     - target: {fileID: 5453554105335756171, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
       propertyPath: m_LocalPosition.z
