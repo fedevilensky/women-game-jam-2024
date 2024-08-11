@@ -20,6 +20,7 @@ class Pair<T1, T2>
 
 public class DialogueManager : MonoBehaviour
 {
+    private GameObject player;
     public static DialogueManager instance;
 
     public GameObject dialogueBox;
@@ -61,6 +62,8 @@ public class DialogueManager : MonoBehaviour
         if (currentDialogue == null || !currentDialogue.MoveNext())
         {
             dialogueBox.SetActive(false);
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
+
             return;
         }
         var part = currentDialogue.Current;
@@ -76,6 +79,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         currentDialogue = dialogue;
         dialogueBox.SetActive(true);
         currentDialogue.MoveNext();
