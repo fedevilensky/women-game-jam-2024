@@ -36,6 +36,10 @@ public class DialogueManager : MonoBehaviour
     private int imageHeight = 128;
     private Dialogue currentDialogue;
 
+    public delegate void DialogueEndCallback();
+
+    private DialogueEndCallback callback;
+
     void Awake()
     {
         if (instance == null)
@@ -71,8 +75,9 @@ public class DialogueManager : MonoBehaviour
             dialogueBox.SetActive(false);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
             timeManager.ResumeTicking();
-
             LevelManager.instance.CheckNextLevel();
+            callback?.Invoke();
+            callback = null;
             return;
         }
         var part = currentDialogue.Current;
@@ -125,13 +130,17 @@ public class DialogueManager : MonoBehaviour
         return texture;
     }
 
-    public void StartDialogue(Dialogue dialogue)
+
+
+
+    public void StartDialogue(Dialogue dialogue, DialogueEndCallback callback = null)
     {
         if (dialogueBox.activeSelf)
         {
             return;
         }
 
+        this.callback = callback;
         timeManager.PauseTicking();
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         currentDialogue = dialogue;
