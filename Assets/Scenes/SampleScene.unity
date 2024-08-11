@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994198949606150916, guid: 806f46aaadea44040831cdfd7e705b0f, type: 3}
       propertyPath: interactionText.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2994198949606150916, guid: 806f46aaadea44040831cdfd7e705b0f, type: 3}
       propertyPath: interactionText.Array.data[0]
@@ -895,7 +895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994198949606150916, guid: 806f46aaadea44040831cdfd7e705b0f, type: 3}
       propertyPath: interactionText.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2994198949606150916, guid: 806f46aaadea44040831cdfd7e705b0f, type: 3}
       propertyPath: interactionText.Array.data[0]
@@ -1429,7 +1429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994198949606150916, guid: 806f46aaadea44040831cdfd7e705b0f, type: 3}
       propertyPath: interactionText.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2994198949606150916, guid: 806f46aaadea44040831cdfd7e705b0f, type: 3}
       propertyPath: interactionText.Array.data[0]
@@ -1965,7 +1965,6 @@ MonoBehaviour:
   - computadora2
   - computadora3
   - 
-  - 
 --- !u!1 &1335956338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,7 +2139,6 @@ MonoBehaviour:
   - escritorio1
   - escritorio2
   - escritorio3
-  - 
   - 
 --- !u!4 &1508250769 stripped
 Transform:
