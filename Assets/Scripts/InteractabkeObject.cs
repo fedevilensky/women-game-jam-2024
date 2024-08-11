@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour
 {
-  public string interactionText;
+  public string[] interactionText;
   public bool isInteractable
   {
     get
@@ -25,7 +25,5 @@ public abstract class InteractableObject : MonoBehaviour
   }
 
   private bool _isInteractable = false;
-  public int activeLevel;
-
   public abstract void Interact(DialogueManager.DialogueEndCallback callback = null);
 }

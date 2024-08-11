@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     private InteractableObject[] interactableObjects;
 
-    private int currentLevel = 0;
+    public int currentLevel = 0;
 
     [SerializeField]
     private Sprite[] levelSprites;
@@ -38,23 +38,27 @@ public class LevelManager : MonoBehaviour
     {
 
         currentLevel = level;
-        foreach (var interactableObject in interactableObjects)
-        {
-            interactableObject.isInteractable = interactableObject.activeLevel == level;
-        }
+
 
         Debug.Log("Level " + level);
         if (level == 0)
         {
+            GameObject.FindObjectOfType<ExperimentTableSpriteHandler>().SetExperimentTableSprite(false);
             PlayIntro();
         }
 
         if (level == 1)
         {
+            GameObject.FindObjectOfType<ExperimentTableSpriteHandler>().SetExperimentTableSprite(false);
             timeManager.StartTicking();
             GetComponent<GameManager>().ResetLoop();
             var dialogue = DialogueParser.Parse("start1");
-            DialogueManager.instance.StartDialogue(dialogue);
+            DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
+        }
+
+        foreach (var interactableObject in interactableObjects)
+        {
+            interactableObject.isInteractable = interactableObject.interactionText[level] != "";
         }
     }
 
