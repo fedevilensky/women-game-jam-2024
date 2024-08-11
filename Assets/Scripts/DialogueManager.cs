@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject dialogueBox;
 
-    public TextMeshProUGUI textMeshPro;
+    public GameObject documentBox;
 
     [SerializeField]
     private int imageHeight = 128;
@@ -59,7 +59,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            NextDialogue();
+            if (dialogueBox.activeSelf)
+                NextDialogue();
+            if (documentBox.activeSelf)
+            {
+                documentBox.SetActive(false);
+                GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
+                callback?.Invoke();
+                timeManager?.ResumeTicking();
+            }
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -84,7 +92,7 @@ public class DialogueManager : MonoBehaviour
         var dialogueImage = GetImage(part.emotion);
 
         GameObject.FindWithTag("DialogueImage").GetComponent<Image>().sprite = dialogueImage;
-        textMeshPro.text = part.text;
+        dialogueBox.GetComponentInChildren<TextMeshProUGUI>().text = part.text;
     }
 
 
@@ -146,6 +154,21 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = dialogue;
         dialogueBox.SetActive(true);
         NextDialogue();
+    }
+
+    public void StartDocument(string documentName, DialogueEndCallback callback = null)
+    {
+        string text;
+        using (TextReader r = new StreamReader("Assets/Dialogues/Documents/" + documentName + ".txt"))
+        {
+            text = r.ReadToEnd();
+        }
+        documentBox.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        this.callback = callback;
+        timeManager?.PauseTicking();
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
+        documentBox.SetActive(true);
+
     }
 }
 

@@ -15,19 +15,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (currentInteractableObject != null)
             {
-                string interactionText;
-                if (currentInteractableObject.isInteractable)
-                {
-                    interactionText = currentInteractableObject.interactionText;
-                }
-                else
-                {
-                    interactionText = "defaultDialogue";
-                }
-                print("interacting with " + interactionText);
-                var dialogue = DialogueParser.Parse(interactionText);
-                DialogueManager.instance.StartDialogue(dialogue, () => lastInteraction = Time.time);
-                currentInteractableObject.isInteractable = false;
+                currentInteractableObject.Interact(() => lastInteraction = Time.time);
             }
         }
     }
