@@ -11,11 +11,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         interactionTrigger = GetComponentsInChildren<Collider2D>().FirstOrDefault(c => c.gameObject.name == "interaction");
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        animator.SetBool("isMoving", false);
     }
 
     // Update is called once per frame
@@ -27,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontal = Mathf.Round(Input.GetAxis("Horizontal"));
         }
+
+        animator.SetFloat("xDirection", horizontal);
+        animator.SetFloat("yDirection", vertical);
+        animator.SetBool("isMoving", horizontal != 0 || vertical != 0);
         var move = new Vector2(horizontal, vertical);
 
         MovePosition(move);

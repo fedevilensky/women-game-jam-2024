@@ -599,7 +599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.7000122, y: 2.8332062}
+  m_AnchoredPosition: {x: -1.7000122, y: 2.833191}
   m_SizeDelta: {x: 73.6638, y: 62.3308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &460880361
@@ -883,8 +883,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToFade: 1
-  fadeIn: 0
-  fadeOut: 0
 --- !u!114 &1085206367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,6 +1228,26 @@ PolygonCollider2D:
       - {x: 9.599999, y: -5.4}
       - {x: 9.599999, y: 5.4}
   m_UseDelaunayMesh: 0
+--- !u!1 &1889647094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4440613306332133920, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
+  m_PrefabInstance: {fileID: 456592362373468156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &1889647099
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889647094}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1966069875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1518,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4440613306332133920, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889647099}
   m_SourcePrefab: {fileID: 100100000, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1513,3 +1534,5 @@ SceneRoots:
   - {fileID: 100506490}
   - {fileID: 1414779100}
   - {fileID: 1966069879}
+  - {fileID: 752047652}
+  - {fileID: 1085206370}
