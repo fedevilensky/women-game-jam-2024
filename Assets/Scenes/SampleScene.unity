@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeScale: 1
-  tickLength: 60
+  tickLength: 11.9
 --- !u!114 &752047655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,7 +1051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53ab248ada760f41b2b7a01328a00ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   timeManager: {fileID: 752047653}
+=======
+  timeManager: {fileID: 0}
+>>>>>>> main
   dialogueBox: {fileID: 1966069875}
   textMeshPro: {fileID: 318378427}
   imageHeight: 128

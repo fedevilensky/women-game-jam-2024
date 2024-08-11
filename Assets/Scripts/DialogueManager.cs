@@ -74,7 +74,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueBox.SetActive(false);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
-            timeManager.ResumeTicking();
+            timeManager?.ResumeTicking();
             LevelManager.instance.CheckNextLevel();
             callback?.Invoke();
             callback = null;
@@ -141,7 +141,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         this.callback = callback;
-        timeManager.PauseTicking();
+        timeManager?.PauseTicking();
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         currentDialogue = dialogue;
         dialogueBox.SetActive(true);
