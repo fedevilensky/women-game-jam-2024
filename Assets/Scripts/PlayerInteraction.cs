@@ -6,18 +6,13 @@ public class PlayerInteraction : MonoBehaviour
 {
     public InteractableObject currentInteractableObject;
 
-    private bool isInteracting = false;
+    private float lastInteraction = 0;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Time.time - lastInteraction > 0.3f && Input.GetKeyUp(KeyCode.Space))
         {
-            isInteracting = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && !isInteracting)
-        {
-            isInteracting = true;
             if (currentInteractableObject != null)
             {
                 string interactionText;
@@ -31,7 +26,7 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 print("interacting with " + interactionText);
                 var dialogue = DialogueParser.Parse(interactionText);
-                DialogueManager.instance.StartDialogue(dialogue);
+                DialogueManager.instance.StartDialogue(dialogue, () => lastInteraction = Time.time);
                 currentInteractableObject.isInteractable = false;
             }
         }
