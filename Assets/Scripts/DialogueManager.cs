@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
 
     private Dialogue currentDialogue;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {

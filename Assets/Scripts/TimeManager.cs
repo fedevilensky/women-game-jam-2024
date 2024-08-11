@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
 
-    private bool ticking = true;
+    private bool ticking = false;
 
     [SerializeField]
     [Range(0.2f, 2f)]
