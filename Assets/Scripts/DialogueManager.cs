@@ -72,6 +72,7 @@ public class DialogueManager : MonoBehaviour
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
             timeManager.ResumeTicking();
 
+            LevelManager.instance.CheckNextLevel();
             return;
         }
         var part = currentDialogue.Current;
