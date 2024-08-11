@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
     // TODO Call animation manager to fade to black screen and while on the black screen, call ResetPlayerPosition
     void BlackScreen()
     {
-        animator.SetTrigger("FadeToBlack");
+        GameObject.FindWithTag("Player").GetComponent<player_movement>().enabled = false;
+        screenFade.FadeToBlackAndBack(ResetPlayerPosition);
         // screenFade.FadeToBlack();
         // ResetPlayerPosition();
         // screenFade.FadeToClear();
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
             playerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
         }
         playerRb.MovePosition(playerResetPosition);
+        GameObject.FindWithTag("Player").GetComponent<player_movement>().enabled = true;
+        timeManager.StartTicking();
     }
 
 
@@ -56,7 +59,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             print("Resetting player position");
-            ResetPlayerPosition();
+            BlackScreen();
         }
     }
 }

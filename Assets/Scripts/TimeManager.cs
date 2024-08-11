@@ -27,18 +27,18 @@ public class TimeManager : MonoBehaviour
         ResetLoop += callback;
     }
 
-    void StartTicking()
+    public void StartTicking()
     {
         remainingTicks = tickLength;
         ticking = true;
     }
 
-    void PauseTicking()
+    public void PauseTicking()
     {
         ticking = false;
     }
 
-    void ResumeTicking()
+    public void ResumeTicking()
     {
         ticking = true;
     }
