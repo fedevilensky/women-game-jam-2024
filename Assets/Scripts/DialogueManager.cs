@@ -21,6 +21,8 @@ class Pair<T1, T2>
 
 public class DialogueManager : MonoBehaviour
 {
+    public TimeManager timeManager;
+
     private Pair<string, Sprite>[] dialogueImages = new Pair<string, Sprite>[10];
     private int dialogueImagesIndex = 0;
     private int dialogueImagesLength = 0;
@@ -68,6 +70,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueBox.SetActive(false);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
+            timeManager.ResumeTicking();
 
             return;
         }
@@ -90,7 +93,12 @@ public class DialogueManager : MonoBehaviour
         }
 
         Texture2D texture = LoadTexture("Assets/Dialogues/Images/" + name + ".png");
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0), texture.height * 1f / imageHeight);
+        Sprite sprite = Sprite.Create(
+            texture,
+            new Rect(0, 0, texture.width, texture.height),
+            new Vector2(0, 0),
+            texture.height * 1f / imageHeight
+        );
 
         if (dialogueImagesLength == dialogueImages.Length)
         {
@@ -123,6 +131,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        timeManager.PauseTicking();
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         currentDialogue = dialogue;
         dialogueBox.SetActive(true);
