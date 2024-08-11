@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private TimeManager timeManager;
+    public TimeManager timeManager;
     private Rigidbody2D playerRb;
 
     [SerializeField]
@@ -18,9 +18,10 @@ public class GameManager : MonoBehaviour
         timeManager = GetComponent<TimeManager>();
         timeManager.SetCallback(ResetLoop);
         playerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+        playerResetPosition = playerRb.position;
     }
 
-    void ResetLoop()
+    public void ResetLoop()
     {
         BlackScreen();
     }

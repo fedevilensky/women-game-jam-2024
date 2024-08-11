@@ -44,6 +44,13 @@ public class LevelManager : MonoBehaviour
         {
             PlayIntro();
         }
+
+        if (level == 1)
+        {
+            GetComponent<GameManager>().ResetLoop();
+            var dialogue = DialogueParser.Parse("start1");
+            DialogueManager.instance.StartDialogue(dialogue);
+        }
     }
 
     void PlayIntro()
@@ -53,6 +60,7 @@ public class LevelManager : MonoBehaviour
         var dialogue = DialogueParser.Parse("intro");
         DialogueManager.instance.StartDialogue(dialogue);
     }
+
 
     public void CheckNextLevel()
     {

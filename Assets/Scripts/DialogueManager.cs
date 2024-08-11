@@ -68,7 +68,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueBox.SetActive(false);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
-
+            LevelManager.instance.CheckNextLevel();
             return;
         }
         var part = currentDialogue.Current;
