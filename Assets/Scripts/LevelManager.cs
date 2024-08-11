@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
+    public TimeManager timeManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +36,14 @@ public class LevelManager : MonoBehaviour
 
     public void SetLevel(int level)
     {
+
         currentLevel = level;
         foreach (var interactableObject in interactableObjects)
         {
             interactableObject.isInteractable = interactableObject.activeLevel == level;
         }
 
+        Debug.Log("Level " + level);
         if (level == 0)
         {
             PlayIntro();
@@ -47,6 +51,7 @@ public class LevelManager : MonoBehaviour
 
         if (level == 1)
         {
+            timeManager.StartTicking();
             GetComponent<GameManager>().ResetLoop();
             var dialogue = DialogueParser.Parse("start1");
             DialogueManager.instance.StartDialogue(dialogue);
@@ -57,7 +62,7 @@ public class LevelManager : MonoBehaviour
     {
         GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(0);
         var dialogue = DialogueParser.Parse("intro");
-        DialogueManager.instance.StartDialogue(dialogue);
+        DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
     }
 
 

@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efa30231c3c3db48ad5f88b49f082ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionText: 
+  interactionText: test
   activeLevel: 0
 --- !u!212 &236459783
 SpriteRenderer:
@@ -1097,10 +1097,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752047652}
-  - component: {fileID: 752047651}
   - component: {fileID: 752047653}
   - component: {fileID: 752047655}
   - component: {fileID: 752047656}
+  - component: {fileID: 752047651}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1257299f270b8f748936f125e4d01e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeManager: {fileID: 0}
+  timeManager: {fileID: 752047653}
   playerResetPosition: {x: 0, y: 0, z: 0}
   screenFade: {fileID: 1085206366}
 --- !u!4 &752047652
@@ -1169,6 +1169,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 69e9cb583d09f334c9f8d653e76e5fc6, type: 3}
   - {fileID: 21300000, guid: 2ccfc7b08db593f45ac5ec7c0164f937, type: 3}
   - {fileID: 21300000, guid: 8dc5ae9035fdec841aaaed828387883b, type: 3}
+  timeManager: {fileID: 752047653}
 --- !u!114 &752047656
 MonoBehaviour:
   m_ObjectHideFlags: 0

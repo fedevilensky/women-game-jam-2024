@@ -6,6 +6,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
 
+    [SerializeField]
     private bool ticking = false;
 
     [SerializeField]
@@ -16,11 +17,16 @@ public class TimeManager : MonoBehaviour
     [Range(1, 100)]
     private float tickLength = 60.0f;
 
-    private float remainingTicks = 0;
+    private float remainingTicks;
 
 
     public delegate void ResetLoopFunc();
     private ResetLoopFunc ResetLoop;
+
+    void Start()
+    {
+        remainingTicks = tickLength;
+    }
 
     public void SetCallback(ResetLoopFunc callback)
     {
