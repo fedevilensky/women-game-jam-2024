@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
             PlayIntro();
         }
 
-        if (level == 1)
+        if (level == 2)
         {
             GameObject.FindObjectOfType<ExperimentTableSpriteHandler>().SetExperimentTableSprite(false);
             timeManager.StartTicking();
