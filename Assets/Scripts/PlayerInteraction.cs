@@ -6,11 +6,18 @@ public class PlayerInteraction : MonoBehaviour
 {
     public InteractableObject currentInteractableObject;
 
+    private bool isInteracting = false;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            isInteracting = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && !isInteracting)
+        {
+            isInteracting = true;
             if (currentInteractableObject != null)
             {
                 string interactionText;
