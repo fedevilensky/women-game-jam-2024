@@ -15,7 +15,7 @@ public class BackgroundUpdater : MonoBehaviour
     GameObject table;
     GameObject coathanger;
 
-    void Start()
+    void Awake()
     {
         table = GameObject.Find("Table");
         coathanger = GameObject.Find("Coathanger");
@@ -36,7 +36,7 @@ public class BackgroundUpdater : MonoBehaviour
             table.SetActive(true);
             coathanger.SetActive(true);
         }
-        GameObject.Find("Table").GetComponent<SpriteRenderer>().sprite = tables[level];
-        GameObject.Find("Coathanger").GetComponent<SpriteRenderer>().sprite = coathangers[level];
+        table.GetComponent<SpriteRenderer>().sprite = tables[level];
+        coathanger.GetComponent<SpriteRenderer>().sprite = coathangers[level];
     }
 }

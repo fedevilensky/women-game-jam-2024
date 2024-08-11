@@ -188,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 100506487}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.08, y: -1.1202363, z: -10}
+  m_LocalPosition: {x: -1.08, y: -4.126098, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 1314429374}
   - component: {fileID: 1314429376}
   - component: {fileID: 1314429375}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Coathanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1657,8 +1657,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 69e9cb583d09f334c9f8d653e76e5fc6, type: 3}
   - {fileID: 21300000, guid: 2ccfc7b08db593f45ac5ec7c0164f937, type: 3}
   - {fileID: 21300000, guid: 8dc5ae9035fdec841aaaed828387883b, type: 3}
-  tables: []
-  coathangers: []
+  tables:
+  - {fileID: -1372840987, guid: 4bf698067c7a6a846b037549a2888690, type: 3}
+  - {fileID: 984547109, guid: 93901d066f00161409fd0c3e5fb5f254, type: 3}
+  - {fileID: -1184354992, guid: 162cd3cf3cab6a64d9cca6235802aa4f, type: 3}
+  coathangers:
+  - {fileID: 1030880988, guid: 4bf698067c7a6a846b037549a2888690, type: 3}
+  - {fileID: 1772189309, guid: 93901d066f00161409fd0c3e5fb5f254, type: 3}
+  - {fileID: 733258034, guid: 162cd3cf3cab6a64d9cca6235802aa4f, type: 3}
 --- !u!1 &1889647094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4440613306332133920, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
@@ -1930,11 +1936,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5453554105335756171, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.08
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 5453554105335756171, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1202363
+      value: -6.39
       objectReference: {fileID: 0}
     - target: {fileID: 5453554105335756171, guid: dc176d4d422a3c54da45be50f990eef1, type: 3}
       propertyPath: m_LocalPosition.z

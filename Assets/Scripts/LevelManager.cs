@@ -55,7 +55,7 @@ public class LevelManager : MonoBehaviour
 
     void PlayIntro()
     {
-        GetComponent<BackgroundUpdater>().SetBackground(0);
+        GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(0);
         var dialogue = DialogueParser.Parse("intro");
         DialogueManager.instance.StartDialogue(dialogue);
     }
