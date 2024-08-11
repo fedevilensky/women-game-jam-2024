@@ -55,15 +55,25 @@ public class LevelManager : MonoBehaviour
             DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
         }
 
-        if (level == 4)
+        if (level == 2)
         {
+            var dialogue = DialogueParser.Parse("intro2");
+            DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
+        }
+
+        if (level == 3)
+        {
+            var dialogue = DialogueParser.Parse("intro3");
+            DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
             GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(1);
         }
-        if (level == 5)
+        if (level == 4)
         {
+            var dialogue = DialogueParser.Parse("intro4");
+            DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
             GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(2);
         }
-        if (level == 6)
+        if (level == 5)
         {
             GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().MovePosition(GameObject.FindWithTag("ForestSpawn").transform.position);
             GameObject.FindWithTag("Background").GetComponent<BackgroundUpdater>().SetBackground(3);
@@ -71,6 +81,8 @@ public class LevelManager : MonoBehaviour
             {
                 interactableObject.gameObject.SetActive(false);
             }
+            var dialogue = DialogueParser.Parse("intro5");
+            DialogueManager.instance.StartDialogue(dialogue, () => timeManager.PauseTicking());
             return;
         }
 
