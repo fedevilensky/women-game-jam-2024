@@ -1,0 +1,2 @@
+Serio
+Una bolsa de semillas necesaria para los experimentos.
