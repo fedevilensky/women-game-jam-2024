@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Dialogue = System.Collections.Generic.IEnumerator<DialoguePart>;
 
@@ -20,13 +21,17 @@ class Pair<T1, T2>
 
 public class DialogueManager : MonoBehaviour
 {
-    private GameObject player;
+    private Pair<string, Sprite>[] dialogueImages = new Pair<string, Sprite>[10];
+    private int dialogueImagesIndex = 0;
+    private int dialogueImagesLength = 0;
     public static DialogueManager instance;
 
     public GameObject dialogueBox;
 
     public TextMeshProUGUI textMeshPro;
 
+    [SerializeField]
+    private int imageHeight = 128;
     private Dialogue currentDialogue;
 
     void Awake()
@@ -67,10 +72,53 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         var part = currentDialogue.Current;
+        var dialogueImage = GetImage(part.emotion);
 
+        GameObject.FindWithTag("DialogueImage").GetComponent<Image>().sprite = dialogueImage;
         textMeshPro.text = part.text;
     }
 
+
+    private Sprite GetImage(string name)
+    {
+        for (int i = 0; i < dialogueImagesLength; i++)
+        {
+            if (dialogueImages[i].First == name)
+            {
+                return dialogueImages[i].Second;
+            }
+        }
+
+        Texture2D texture = LoadTexture("Assets/Dialogues/Images/" + name + ".png");
+        // if (!texture.Reinitialize(texture.width * imageHeight / texture.height, imageHeight))
+        // {
+        //     Debug.LogError("Failed to reinitialize texture");
+        // }
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0), texture.height * 1f / imageHeight);
+
+        if (dialogueImagesLength == dialogueImages.Length)
+        {
+            dialogueImagesIndex = (dialogueImagesIndex + 1) % dialogueImages.Length;
+        }
+        else
+        {
+            dialogueImagesLength++;
+            dialogueImagesIndex = dialogueImagesLength - 1;
+        }
+
+
+        dialogueImages[dialogueImagesIndex] = new Pair<string, Sprite>(name, sprite);
+
+        return sprite;
+    }
+
+    private Texture2D LoadTexture(string path)
+    {
+        byte[] fileData = File.ReadAllBytes(path);
+        Texture2D texture = new Texture2D(2, 2); // size is irrelevant, it will be overwritten
+        texture.LoadImage(fileData); //..this will auto-resize the texture dimensions.
+        return texture;
+    }
 
     public void StartDialogue(Dialogue dialogue)
     {
@@ -82,9 +130,7 @@ public class DialogueManager : MonoBehaviour
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         currentDialogue = dialogue;
         dialogueBox.SetActive(true);
-        currentDialogue.MoveNext();
-        var part = currentDialogue.Current;
-        textMeshPro.text = part.text;
+        NextDialogue();
     }
 }
 
@@ -105,10 +151,9 @@ public class DialogueParser
 
         for (int i = 0; i < dialogueBufferLength; i++)
         {
-            var index = (dialogueBufferIndex + i) % dialogueBuffer.Length;
-            if (dialogueBuffer[index].First == dialogueTitle)
+            if (dialogueBuffer[i].First == dialogueTitle)
             {
-                return dialogueBuffer[index].Second.GetEnumerator();
+                return dialogueBuffer[i].Second.GetEnumerator();
             }
         }
 

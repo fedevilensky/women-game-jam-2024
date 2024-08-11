@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 243223265}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: DialogueImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,7 +439,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 68.413795, y: -78.99996}
-  m_SizeDelta: {x: 140, y: 100}
+  m_SizeDelta: {x: 140, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243223265
 MonoBehaviour:
@@ -1261,6 +1261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 1966069875}
   textMeshPro: {fileID: 318378427}
+  imageHeight: 128
 --- !u!4 &1414779100
 Transform:
   m_ObjectHideFlags: 0
